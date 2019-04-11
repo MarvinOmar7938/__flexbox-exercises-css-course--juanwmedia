@@ -1,0 +1,54 @@
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: lightgray;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.contenedor {
+  border: 20px solid white;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  justify-content: center;
+  height: 100vh; /*vh = viewport height*/
+}
+
+div[class*="item-"] {
+  background: orange;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid gray;
+  /*
+    Si hay espacio disponible,
+    se 👉👉"repartirá"👈👈 de 
+    forma equitativa ese espacio 
+    (Es decir: todos tiene el 🏷️**mismo tamaño**, 
+    sin importar el cantidad de **flex-items**). 
+    Por lo tanto, se usa 
+    ✔️✔️TODO el espacio disponible ✔️✔️.
+  */
+  /* flex-grow: 1; */
+}
+
+/*odd = impar*/
+div[class*="item-"]:nth-child(odd) {
+  background-color: black;
+  color: white;
+}

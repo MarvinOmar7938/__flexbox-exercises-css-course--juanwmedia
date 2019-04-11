@@ -1,0 +1,81 @@
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: lightgray;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.contenedor {
+  border: 20px solid white;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  height: 100vh; /*vh = viewport height*/
+}
+
+div[class*="item-"] {
+  background: orange;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid gray;
+  /*
+    Si hay espacio disponible,
+    se 👉👉"repartirá"👈👈 de 
+    forma equitativa ese espacio 
+    (Es decir: todos tiene el 🏷️**mismo tamaño**, 
+    sin importar el cantidad de **flex-items**). 
+    Por lo tanto, se usa 
+    ✔️✔️TODO el espacio disponible ✔️✔️.
+  */
+  flex-grow: 1;
+}
+
+/*odd = impar*/
+div[class*="item-"]:nth-child(odd) {
+  background-color: black;
+  color: white;
+}
+
+/* max-width < 768px; */
+@media (max-width: 768px){
+  div[class*="item-"]:nth-child(5) {
+    background-color: red;
+    /* for default: 0 - para todo los flex items */
+    /* 
+       ¿Por que va 'al final'?
+       R. Porque por defecto el order:0 y 
+       para mantener el orden deber ir 'al final'
+       Algo como: 0 - 0 - 0 - 0 - 0 - ... 1 😊
+    */
+    order: -2;
+  }
+}
+
+div[class*="item-"]:nth-child(7) {
+  background-color: green;
+  /* for default: 0 - para todo los flex items */
+  order: -3;
+}
+
+div[class*="item-"]:nth-child(8) {
+  background-color: rgb(88, 88, 202);
+  color: white;
+  /* for default: 0 - para todo los flex items */
+  order: 1;
+}
